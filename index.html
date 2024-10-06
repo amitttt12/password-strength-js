@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Password Strength- Javascript Practice</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1 class="headerText">Password Strength Checker</h1>
+    <div class="container">
+      <div class="inputBox">
+        <input type="password" id="password" placeholder="Password..." />
+        <button type="submit"><img src="arrow.png" alt="arrow-image" /></button>
+        <p id="message">Passowrd is <span id="strength"></span></p>
+      </div>
+    </div>
+
+    <script>
+      let password = document.getElementById("password");
+      let message = document.getElementById("message");
+      let passwordStrength = document.getElementById("strength");
+
+      password.addEventListener("input", () => {
+        if (password.value.length > 0) {
+          message.style.display = "block";
+        } else {
+          message.style.display = "none";
+        }
+
+        if (password.value.length < 4) {
+          passwordStrength.innerHTML = "weak";
+          password.style.borderColor = "#ff5925";
+          message.style.color = "#ff5925";
+        } else if (password.value.length >= 4 && password.value.length < 8) {
+          passwordStrength.innerHTML = "medium";
+          password.style.borderColor = "yellow";
+          message.style.color = "yellow";
+        } else if (password.value.length >= 4) {
+          passwordStrength.innerHTML = "strong";
+          password.style.borderColor = "#26d730";
+          message.style.color = "#26d730";
+        }
+      });
+    </script>
+  </body>
+</html>
